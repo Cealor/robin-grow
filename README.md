@@ -19,6 +19,8 @@ https://github.com/vartan/robin-grow
 
 Updates (times Pacific time)
 
+# Changelog
+
     0.2: Using grow command instead of clicking stuff. Sends command when page is loaded, and also every minute just in case.
 
     0.3: Also informs the page about the script
