@@ -11,6 +11,12 @@
 // @grant   GM_getValue
 // @grant   GM_setValue
 // ==/UserScript==
+function rewriteCSS() {
+  $(".robin-chat--body").css({
+    "height": "80vh"
+  });
+}
+
 (function() {
     // Settings
     // DOM Setup begin
@@ -517,60 +523,3 @@
     $("#robinSendMessage").append('<div onclick={$(".text-counter-input").submit();} class="robin-chat--vote" style="font-weight: bold; padding: 5px;cursor: pointer; margin-left:0;" id="sendBtn">Send Message</div>'); // Send message
     $('#robinChatInput').css('background', '#EFEFED');
 })();
-
- // Spam Filter by /LeoVerto
- 
-   var manualThaiList = ["̍", "̎", "̄", "̅", "̿", "̑", "̆", "̐", "͒", "͗", "\
-  ", "͑", "̇", "̈", "̊", "͂", "̓", "̈́", "͊", "͋", "͌", "\
-  ", "̃", "̂", "̌", "͐", "̀", "́", "̋", "̏", "̒", "̓", "\
-  ", "̔", "̽", "̉", "ͣ", "ͤ", "ͥ", "ͦ", "ͧ", "ͨ", "ͩ", "\
-  ", "ͪ", "ͫ", "ͬ", "ͭ", "ͮ", "ͯ", "̾", "͛", "͆", "̚", "\
-  ", "̕", "̛", "̀", "́", "͘", "̡", "̢", "̧", "̨", "̴", "\
-  ", "̵", "̶", "͏", "͜", "͝", "͞", "͟", "͠", "͢", "̸", "\
-  ", "̷", "͡", "҉", "\
-  ", "̖", "̗", "̘", "̙", "̜", "̝", "̞", "̟", "̠", "̤", "\
-  ", "̥", "̦", "̩", "̪", "̫", "̬", "̭", "̮", "̯", "̰", "\
-  ", "̱", "̲", "̳", "̹", "̺", "̻", "̼", "ͅ", "͇", "͈", "\
-  ", "͉", "͍", "͎", "͓", "͔", "͕", "͖", "͙", "͚", "̣", "\
-  "];
-
-  var spamBlacklist = ["spam the most used",
-  "ຈل͜ຈ", "hail the", "autovoter", "staying", "﷽", "group to stay", "pasta",
-  "automatically voted", "stayers are betrayers", "stayers aint players",
-  "mins remaining. status", ">>>>>>>>>>>>>>>>>>>>>>>",
-  "TRUMPSBUTTPIRATES2016", "TRUMPSFIERYPOOPS2016",
-  "ALL HAIL THE TACO BELL BOT", "#420", "้", "็", "◕_◕",
-  "<<<<<<<<<<<<<<<<<<<<<<", "growing is all we know", "f it ends on you",
-  "timecube", "\( ͡° ͜ʖ ͡°\)", "◕", "guys can you please not spam the chat", "ｍｅｍｅｓ ｏｆ ｃａｐｉｔａｌｉｓｍ",
-  "𝐁𝐄𝐑𝐍𝐈𝐄 𝐒𝐀𝐍𝐃𝐌𝐀𝐍", "█▄█▄", "TED CRUZ 2016"
-  ];
-
-  var nonEnglishSpamRegex = "[^\x00-\x7F]+";
-
-  var remainingMessageArray = $(".robin-message--message:contains('approx')");
-
- if (remainingMessageArray.length == 0) {
-    //This shouldn't happen
-    return "Unknown";
-  }
-
- var message = remainingMessageArray.text();
- 
- function checkSpam(message) {
-
-  if(filterNonAscii){
-    if(message.match(nonEnglishSpamRegex)){
-      updateCounter("filter-nonascii-counter", filteredNonAsciiCount);
-      return true;
-    }
-  }
-
-  for (o = 0; o < spamBlacklist.length; o++) {
-    if (message.toLowerCase().search(spamBlacklist[o]) != -1) {
-      filteredSpamCount += 1;
-      updateCounter("filter-spam-counter", filteredSpamCount);
-      return true;
-    }
-  }
-  return false;
-}
