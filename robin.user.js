@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Robin Grow
 // @namespace    http://tampermonkey.net/
-// @version      1.59
+// @version      1.59b
 // @description  Try to take over the world!
-// @author       /u/mvartan
+// @author       /u/mvartan  /u/Cealor
 // @include      https://www.reddit.com/robin*
-// @updateURL    https://github.com/vartan/robin-grow/raw/master/robin.user.js
+// @updateURL    https://github.com/Cealor/robin-grow/raw/master/robin.user.js
 // @require       http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
 // @grant   GM_getValue
 // @grant   GM_setValue
