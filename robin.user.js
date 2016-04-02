@@ -1,16 +1,12 @@
 // ==UserScript==
-// @name         Robin Grow
+// @name         Robin Script
 // @namespace    http://tampermonkey.net/
-<<<<<<< HEAD
-// @version      1.59.2
-=======
 // @version      1.61
->>>>>>> refs/remotes/vartan/master
 // @description  Try to take over the world!
 // @author       /u/mvartan
 // @contributor  /u/Cealor
 // @include      https://www.reddit.com/robin*
-// @updateURL    https://github.com/Cealor/robin-grow/raw/master/robin.user.js
+// @updateURL    https://github.com/vartan/robin-grow/raw/master/robin.user.js
 // @require       http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
 // @grant   GM_getValue
 // @grant   GM_setValue
@@ -167,11 +163,7 @@
             default:
                 $(".robin-chat--vote.robin--vote-class--increase:not('.robin--active')").click();
                 break;
-<<<<<<< HEAD
-        }      
-=======
         }
->>>>>>> refs/remotes/vartan/master
         $(".timeleft").text(formatNumber(howLongLeft()) + " minutes remaining");
 
         var list = {};
@@ -308,13 +300,6 @@
         }
     }
 
-<<<<<<< HEAD
-    function removeSpam() {
-        if (settings["removeSpam"]) {
-            $(".robin--user-class--user").filter(function(num, message) {
-                var text = $(message).find(".robin-message--message").text();
-                var filter = isBotSpam(text);
-=======
     function filterMessages() {
 
         $(".robin--user-class--user").filter(function(num, message) {
@@ -339,7 +324,6 @@
             return false;
 
         }).remove();
->>>>>>> refs/remotes/vartan/master
 
     }
 
@@ -440,13 +424,6 @@
             }
         });
     }
-<<<<<<< HEAD
-    
-    $(document).on("DOMNodeInserted", function(e) {
-        findAndHideSpam();
-        removeSpam();
-    })
-=======
 
 
     function openSettings() {
@@ -476,7 +453,6 @@
 
     var settings = loadSetting();
 
->>>>>>> refs/remotes/vartan/master
 
     setInterval(update, 10000);
     update();
