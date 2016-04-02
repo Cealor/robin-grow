@@ -26,8 +26,7 @@ var manualThaiList = ["̍", "̎", "̄", "̅", "̿", "̑", "̆", "̐", "͒", "͗"
 ", "͉", "͍", "͎", "͓", "͔", "͕", "͖", "͙", "͚", "̣", "\
 "];
 
-var spamBlacklist = [
-  "spam the most used",
+var spamBlacklist = ["spam the most used",
   "ຈل͜ຈ", "hail the", "autovoter", "staying", "﷽", "group to stay", "pasta",
   "automatically voted", "stayers are betrayers", "stayers aint players",
   "mins remaining. status", ">>>>>>>>>>>>>>>>>>>>>>>",
