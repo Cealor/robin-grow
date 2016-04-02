@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Robin Script
 // @namespace    http://tampermonkey.net/
-// @version      1.66.1
+// @version      1.66.2
 // @description  Try to take over the world!
 // @author       /u/mvartan
 // @contributor  /u/Cealor, /u/terbeaux
