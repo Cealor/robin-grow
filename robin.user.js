@@ -6,7 +6,7 @@
 // @author       /u/mvartan
 // @contributor  /u/Cealor, /u/terbeaux
 // @include      https://www.reddit.com/robin*
-// @updateURL    https://github.com/vartan/robin-grow/raw/master/robin.user.js
+// @updateURL    https://github.com/Cealor/robin-script/raw/master/robin.user.js
 // @require       http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
 // @grant   GM_getValue
 // @grant   GM_setValue
