@@ -21,7 +21,7 @@ https://github.com/Cealor/robin-script
 
 
 # Changelog
-    1.4: Merge /vartan/robin-grow with /gardner/robin
+    1.7: Merge /vartan/robin-grow with /gardner/robin
          Changes pending
          
     1.3: Filters out messages that users keep repeating
