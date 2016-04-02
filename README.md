@@ -43,4 +43,4 @@ Screenshot of information above "Grow" button
 
    - [original script](https://github.com/vartan/robin-grow) by [vartan](https://github.com/vartan)
    - [anti-spam script](https://github.com/gardner/robin) by [gardner](https://github.com/gardner)
-   - [Robin-Assistent](https://github.com/LeoVerto/Robin-Assistant)
+   - [Robin-Assistant](https://github.com/LeoVerto/Robin-Assistant)
