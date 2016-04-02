@@ -11,44 +11,6 @@
 // @grant   GM_getValue
 // @grant   GM_setValue
 // ==/UserScript==
-
-var manualThaiList = ["̍", "̎", "̄", "̅", "̿", "̑", "̆", "̐", "͒", "͗", "\
-", "͑", "̇", "̈", "̊", "͂", "̓", "̈́", "͊", "͋", "͌", "\
-", "̃", "̂", "̌", "͐", "̀", "́", "̋", "̏", "̒", "̓", "\
-", "̔", "̽", "̉", "ͣ", "ͤ", "ͥ", "ͦ", "ͧ", "ͨ", "ͩ", "\
-", "ͪ", "ͫ", "ͬ", "ͭ", "ͮ", "ͯ", "̾", "͛", "͆", "̚", "\
-", "̕", "̛", "̀", "́", "͘", "̡", "̢", "̧", "̨", "̴", "\
-", "̵", "̶", "͏", "͜", "͝", "͞", "͟", "͠", "͢", "̸", "\
-", "̷", "͡", "҉", "\
-", "̖", "̗", "̘", "̙", "̜", "̝", "̞", "̟", "̠", "̤", "\
-", "̥", "̦", "̩", "̪", "̫", "̬", "̭", "̮", "̯", "̰", "\
-", "̱", "̲", "̳", "̹", "̺", "̻", "̼", "ͅ", "͇", "͈", "\
-", "͉", "͍", "͎", "͓", "͔", "͕", "͖", "͙", "͚", "̣", "\
-"];
-
-var spamBlacklist = ["spam the most used",
-  "ຈل͜ຈ", "hail the", "autovoter", "staying", "﷽", "group to stay", "pasta",
-  "automatically voted", "stayers are betrayers", "stayers aint players",
-  "mins remaining. status", ">>>>>>>>>>>>>>>>>>>>>>>",
-  "TRUMPSBUTTPIRATES2016", "TRUMPSFIERYPOOPS2016",
-  "ALL HAIL THE TACO BELL BOT", "#420", "้", "็", "◕_◕",
-  "<<<<<<<<<<<<<<<<<<<<<<", "growing is all we know", "f it ends on you",
-  "timecube", "\( ͡° ͜ʖ ͡°\)", "◕", "guys can you please not spam the chat", "ｍｅｍｅｓ ｏｆ ｃａｐｉｔａｌｉｓｍ",
-  "𝐁𝐄𝐑𝐍𝐈𝐄 𝐒𝐀𝐍𝐃𝐌𝐀𝐍", "█▄█▄", "TED CRUZ 2016"
-];
-
-var nonEnglishSpamRegex = "[^\x00-\x7F]+";
-
-var remainingMessageArray = $(".robin-message--message:contains('approx')");
-
- if (remainingMessageArray.length == 0) {
-    //This shouldn't happen
-    return "Unknown";
-  }
-
- var message = remainingMessageArray.text();
-
-
 (function() {
     // Settings
     // DOM Setup begin
@@ -403,13 +365,44 @@ var remainingMessageArray = $(".robin-message--message:contains('approx')");
 
 
  // Spam Filter by /LeoVerto
- function checkSpam(message) {
-  // Check for 6 or more repetitions of the same character
-  if (message.search(/(.)\1{5,}/) != -1) {
-    filteredSpamCount += 1;
-    updateCounter("filter-spam-counter", filteredSpamCount);
-    return true;
+ 
+   var manualThaiList = ["̍", "̎", "̄", "̅", "̿", "̑", "̆", "̐", "͒", "͗", "\
+  ", "͑", "̇", "̈", "̊", "͂", "̓", "̈́", "͊", "͋", "͌", "\
+  ", "̃", "̂", "̌", "͐", "̀", "́", "̋", "̏", "̒", "̓", "\
+  ", "̔", "̽", "̉", "ͣ", "ͤ", "ͥ", "ͦ", "ͧ", "ͨ", "ͩ", "\
+  ", "ͪ", "ͫ", "ͬ", "ͭ", "ͮ", "ͯ", "̾", "͛", "͆", "̚", "\
+  ", "̕", "̛", "̀", "́", "͘", "̡", "̢", "̧", "̨", "̴", "\
+  ", "̵", "̶", "͏", "͜", "͝", "͞", "͟", "͠", "͢", "̸", "\
+  ", "̷", "͡", "҉", "\
+  ", "̖", "̗", "̘", "̙", "̜", "̝", "̞", "̟", "̠", "̤", "\
+  ", "̥", "̦", "̩", "̪", "̫", "̬", "̭", "̮", "̯", "̰", "\
+  ", "̱", "̲", "̳", "̹", "̺", "̻", "̼", "ͅ", "͇", "͈", "\
+  ", "͉", "͍", "͎", "͓", "͔", "͕", "͖", "͙", "͚", "̣", "\
+  "];
+
+  var spamBlacklist = ["spam the most used",
+  "ຈل͜ຈ", "hail the", "autovoter", "staying", "﷽", "group to stay", "pasta",
+  "automatically voted", "stayers are betrayers", "stayers aint players",
+  "mins remaining. status", ">>>>>>>>>>>>>>>>>>>>>>>",
+  "TRUMPSBUTTPIRATES2016", "TRUMPSFIERYPOOPS2016",
+  "ALL HAIL THE TACO BELL BOT", "#420", "้", "็", "◕_◕",
+  "<<<<<<<<<<<<<<<<<<<<<<", "growing is all we know", "f it ends on you",
+  "timecube", "\( ͡° ͜ʖ ͡°\)", "◕", "guys can you please not spam the chat", "ｍｅｍｅｓ ｏｆ ｃａｐｉｔａｌｉｓｍ",
+  "𝐁𝐄𝐑𝐍𝐈𝐄 𝐒𝐀𝐍𝐃𝐌𝐀𝐍", "█▄█▄", "TED CRUZ 2016"
+  ];
+
+  var nonEnglishSpamRegex = "[^\x00-\x7F]+";
+
+  var remainingMessageArray = $(".robin-message--message:contains('approx')");
+
+ if (remainingMessageArray.length == 0) {
+    //This shouldn't happen
+    return "Unknown";
   }
+
+ var message = remainingMessageArray.text();
+ 
+ function checkSpam(message) {
 
   if(filterNonAscii){
     if(message.match(nonEnglishSpamRegex)){
