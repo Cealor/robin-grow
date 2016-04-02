@@ -35,7 +35,7 @@ var spamBlacklist = [
   "ALL HAIL THE TACO BELL BOT", "#420", "้", "็", "◕_◕",
   "<<<<<<<<<<<<<<<<<<<<<<", "growing is all we know", "f it ends on you",
   "timecube", "\( ͡° ͜ʖ ͡°\)", "◕", "guys can you please not spam the chat", "ｍｅｍｅｓ ｏｆ ｃａｐｉｔａｌｉｓｍ",
-  "𝐁𝐄𝐑𝐍𝐈𝐄 𝐒𝐀𝐍𝐃𝐌𝐀𝐍", "█▄█▄"
+  "𝐁𝐄𝐑𝐍𝐈𝐄 𝐒𝐀𝐍𝐃𝐌𝐀𝐍", "█▄█▄", "TED CRUZ 2016"
 ];
 
 var nonEnglishSpamRegex = "[^\x00-\x7F]+";
