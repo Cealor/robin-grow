@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Robin Script
 // @namespace    http://tampermonkey.net/
-// @version      1.66.2
+// @version      1.67
 // @description  Try to take over the world!
 // @author       /u/mvartan
 // @contributor  /u/Cealor, /u/terbeaux
@@ -11,6 +11,43 @@
 // @grant   GM_getValue
 // @grant   GM_setValue
 // ==/UserScript==
+
+var manualThaiList = ["̍", "̎", "̄", "̅", "̿", "̑", "̆", "̐", "͒", "͗", "\
+", "͑", "̇", "̈", "̊", "͂", "̓", "̈́", "͊", "͋", "͌", "\
+", "̃", "̂", "̌", "͐", "̀", "́", "̋", "̏", "̒", "̓", "\
+", "̔", "̽", "̉", "ͣ", "ͤ", "ͥ", "ͦ", "ͧ", "ͨ", "ͩ", "\
+", "ͪ", "ͫ", "ͬ", "ͭ", "ͮ", "ͯ", "̾", "͛", "͆", "̚", "\
+", "̕", "̛", "̀", "́", "͘", "̡", "̢", "̧", "̨", "̴", "\
+", "̵", "̶", "͏", "͜", "͝", "͞", "͟", "͠", "͢", "̸", "\
+", "̷", "͡", "҉", "\
+", "̖", "̗", "̘", "̙", "̜", "̝", "̞", "̟", "̠", "̤", "\
+", "̥", "̦", "̩", "̪", "̫", "̬", "̭", "̮", "̯", "̰", "\
+", "̱", "̲", "̳", "̹", "̺", "̻", "̼", "ͅ", "͇", "͈", "\
+", "͉", "͍", "͎", "͓", "͔", "͕", "͖", "͙", "͚", "̣", "\
+"];
+
+var spamBlacklist = [
+  "ຈل͜ຈ", "hail the", "autovoter", "staying", "﷽", "group to stay", "pasta",
+  "automatically voted", "stayers are betrayers", "stayers aint players",
+  "mins remaining. status", ">>>>>>>>>>>>>>>>>>>>>>>",
+  "TRUMPSBUTTPIRATES2016", "TRUMPSFIERYPOOPS2016",
+  "ALL HAIL THE TACO BELL BOT", "#420", "้", "็", "◕_◕",
+  "<<<<<<<<<<<<<<<<<<<<<<", "growing is all we know", "f it ends on you",
+  "timecube", "\( ͡° ͜ʖ ͡°\)", "◕", "guys can you please not spam the chat"
+];
+
+var nonEnglishSpamRegex = "[^\x00-\x7F]+";
+
+var remainingMessageArray = $(".robin-message--message:contains('approx')");
+
+ if (remainingMessageArray.length == 0) {
+    //This shouldn't happen
+    return "Unknown";
+  }
+
+ var message = remainingMessageArray.text();
+
+
 (function() {
     // Settings
     // DOM Setup begin
@@ -362,6 +399,33 @@
         // if(filter)console.log("removing "+text);
         return filter;
     }
+
+
+ // Spam Filter by /LeoVerto
+ function checkSpam(message) {
+  // Check for 6 or more repetitions of the same character
+  if (message.search(/(.)\1{5,}/) != -1) {
+    filteredSpamCount += 1;
+    updateCounter("filter-spam-counter", filteredSpamCount);
+    return true;
+  }
+
+  if(filterNonAscii){
+    if(message.match(nonEnglishSpamRegex)){
+      updateCounter("filter-nonascii-counter", filteredNonAsciiCount);
+      return true;
+    }
+  }
+
+  for (o = 0; o < spamBlacklist.length; o++) {
+    if (message.toLowerCase().search(spamBlacklist[o]) != -1) {
+      filteredSpamCount += 1;
+      updateCounter("filter-spam-counter", filteredSpamCount);
+      return true;
+    }
+  }
+  return false;
+}
 
     // Individual mute button /u/verox-
     var targetNodes = $("#robinChatMessageList");
